@@ -1,2 +1,2 @@
-Just a test project to try thimgs out.
+Just a test project to try things out.
 haha
