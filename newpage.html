@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>试用期作业</title>
+    <style>
+        #title {
+            font-size: 试用期作业;
+            font-weight: bold;
+            margin-bottom: 100px;
+            line-height: 1.5;
+            color: white;
+            text-align: center;
+            margin-top: 50px;
+            background-image: url('3.jpg');
+            padding: 50px;
+            border-radius: 10px;
+        }
+    </style>>
+</head>
+<body>
+    <div id="title">试用期作业 </div>
+    <div id="time"></div>
+    <br>
+    <img src="Cyber Rose.jpg" style="width:200px;height:200px;">
+<body>
+    <button onclick="alert('已提交！')">提交</button>
+   <div>你为什么选择加入web工作站？</div>
+   <label><input type="checkbox"> 学习新技术拿去撩妹</label><br>
+   <label><input type="checkbox"> 想当个修电脑师傅</label><br>
+   <label><input type="checkbox" >我喜欢傅思思学姐做的课件 </label><br>
+   <label><input type="checkbox" > 我有我的深意</label><br>
+    <br>
+    <div>你喜欢web工作站的什么？</div>
+    <label><input type="checkbox" name="like" value="culture"> 打代码的快乐</label><br>
+    <label><input type="checkbox" name="like" value="projects"> 搞抽象不再孤单</label><br>
+    <label><input type="checkbox" name="like" value="learning"> 傅思思</label><br>
+    <label><input type="checkbox" name="like" value="team"> 陈神医</label><br>
+    <input type="text" placeholder="阁下尊姓大名？"><br>
+    <input type="password" placeholder="还记得我们的约定吗"><br>
+    <input type="file" placeholder="上传文件"><br>
+<script>
+function showTime() {
+    var now = new Date();
+    var timeStr = now.getFullYear() + "/" +
+        (now.getMonth() + 1).toString().padStart(2, '0') + "/" +
+        now.getDate().toString().padStart(2, '0') + " " +
+        now.getHours().toString().padStart(2, '0') + ":" +
+        now.getMinutes().toString().padStart(2, '0') + ":" +
+        now.getSeconds().toString().padStart(2, '0');
+    document.getElementById("time").innerText = timeStr;
+}
+setInterval(showTime, 1000);
+showTime();
+</script>
+</body>
+</html>
