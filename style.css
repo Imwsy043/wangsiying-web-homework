@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-weight: inherit;
+}
+.main{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.header {
+  width: 100%;
+  height: 10%;
+}
+.card {
+  width: 100%;
+  height: 90%;
+      background-color: rgba(0,0,0,0.2);
+      backdrop-filter: blur(5px);                    
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+.card-footer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+    }
+.input-group {
+        width: 95%; /* 与卡片留出微小内边距 */
+        display: flex; /* 图标与输入框一行排列 */
+        justify-content: space-around; /* 两端均衡留白（含图标） */
+        align-items: center; /* 垂直居中对齐 */
+        padding: 10px; /* 容器内衬，扩大可点击/可触区 */
+        border: 1px solid #ccc; /* 轻边框，强调输入区域 */
+        border-radius: 5px; /* 小圆角，呼应卡片圆角 */
+      }  
+.input-group input {
+        width: 90%; /* 让输入框占据主要可用空间 */
+        height: 30px; /* 统一输入高度 */
+        border: none; /* 去掉原生边框 */
+        border-radius: 5px; /* 与容器相呼应的小圆角 */
+        padding: 0 10px; /* 左右内边距，提升可读性 */
+        box-sizing: border-box; /* 包含内边距，避免溢出 */
+        background: none; /* 透明背景，露出卡片底色 */
+        outline: none; /* 取消默认 focus 外轮廓（视觉统一） */
+        color: white; /* 文字白色，与深色底形成对比 */
+      }     
+.card-footer button {
+        height: 36px;  /* 统一按钮高度 */
+        padding: 0 16px; /* 左右内衬，保证触控面积 */
+        border: none; /* 去默认边框 */
+        border-radius: 100px; /* 胶囊形态 */
+        background-color: #7760eb; /* 按钮底色（示例配色） */
+        color: #fff; /* 文本与图标颜色对比明确 */
+        cursor: pointer; /* 悬浮指针，提示可点击 */
+        display: flex; /* 按钮内：文案 + 图标水平排列 */
+        justify-content: center;
+        align-items: center;
+      }
+.header{
+      width: 100%;
+      height: 10%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }   
+.header button {
+        height: 36px; /* 统一按钮高度 */
+        width: 36px; /* 宽高相等，圆形 */
+        border: none; /* 去默认边框 */
+        border-radius: 100px; 
+        background-color: rgba(255, 255, 255, 0.1); /* 半透明白色背景 */
+        color: white; /* 图标白色，与背景对比 */
+        cursor: pointer; /* 悬浮指针，提示可点击 */
+        display: flex; /* 按钮内：图标水平垂直居中 */
+        justify-content: center;
+        align-items: center;
+        padding: 8px 16px; 
+        white-space: nowrap;
+      }   
+.header button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+      }
+.header button:active {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+.card h1 {
+        color: white;
+        font-size: 24px;
+      }
+.main::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* 半透明黑色遮罩，提升对比度 */
+  z-index: 1; 
+}
+ .card-footer button:hover {
+        background-color: #7760eb;
+      }
+.card-footer button:active {
+        background-color: #7760eb;  
+      }
+.card-footer > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+.card-footer > div img {
+  background-color: rgba(106, 104, 104, 0.676);
+  color: aliceblue;
+  margin-right: 10px;
+}
+.card-footer > div button:hover {
+  background-color: #7760eb;
+      }
+.card-footer > div button:active {
+        border-color: #7760eb; /* 焦点时边框变为品牌色 */
+        background-color: rebeccapurple;
+      }
+button {
+  transition: 0.5s;
+}
+.input-group {
+        position: relative; /* 为浮动标签提供定位基础 */
+        transition: border-color 0.3s ease; /* 边框颜色过渡动画 */
+      }
+.input-wrapper {
+        position: relative; /* 为浮动标签提供定位基础 */
+        width: 90%; /* 占据主要可用空间 */
+        display: flex;
+        flex-direction: column;
+      }
+
+      .input-group input {
+        width: 90%;  
+      }
+      .input-group label {
+        position: absolute;  
+        left: 10px;  
+        top: 50%;  
+        transform: translateY(-50%);  
+        color: #ccc;  
+        font-size: 16px;  
+        pointer-events: none;  
+        transition: all 0.3s ease;  
+        padding: 0 4px;  
+        z-index: 1;  
+      }
+
+      /* 输入框获得焦点时的样式 */
+      .input-group:focus-within {
+        border-color: #7760eb; /* 焦点时边框变为品牌色 */
+      }
+
+      /* 输入框获得焦点或有内容时，标签移动到上方 */
+      .input-group input:focus + label,
+      .input-group input:not(:placeholder-shown) + label {
+        top: -30px; /* 移动到输入框上方 */
+        left: -36px; /* 稍微向左调整位置 */
+        transform: translateY(0); /* 取消垂直居中变换 */
+        font-size: 12px; /* 字体变小 */
+        border-color: #7760eb; /* 焦点时边框变为品牌色 */
+        color: #7760eb; /* 字体颜色变为品牌色 */
+      }
