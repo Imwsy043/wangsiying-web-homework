@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -353,3 +354,401 @@
     </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="0.css" />
+    <title>Final_project_wsy</title>
+    <style>
+      :root {
+        /* 以 rem 为单位，随根字体大小缩放（调整该值控制导航最小宽度） */
+        --nav-width: 11rem;
+        --nav-gap: 24px;
+      }
+
+      /* 基本布局 */
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: #f6f7fb;
+        color: #222;
+      }
+      header,
+      footer {
+        background: #eee;
+        padding: 16px;
+        text-align: center;
+      }
+
+      /* 容器：左侧悬浮导航 + 中间 main + 右侧 aside */
+      .container {
+        display: flex;
+        flex: 1;
+        min-height: 0; /* 允许内部滚动 */
+        background-color: #67a4eb;
+
+      }
+
+      /* 悬浮导航：宽度随根字体大小适配，垂直居中靠左 */
+      .box {
+        position: fixed;
+        height: auto;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%); /* 垂直居中 */
+        min-width: var(--nav-width);
+        width: auto;               /* 自适应内容/字体 */
+        background: rgba(255,255,255,0.96);
+        border-radius: 8px;
+        padding: 0.6rem;           /* 使用 rem/em 单位随字体缩放 */
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        align-items: center;      /* 文本居中 */
+        z-index: 50;
+      }
+        .box .active {
+        background: rgba(74,155,255,0.12);
+        font-weight: 700;
+      }
+      /* 导航演示按钮 */
+      .box button {
+        border: none;
+        background: transparent;
+        padding: 0.55rem 0.6rem;   /* rem 单位，随字体放大 */
+        text-align: center;
+        cursor: pointer;
+        border-radius: 6px;
+        font-size: 1rem;
+        width: 100%;               /* 每个按钮一行，宽度与 box 一致 */
+      }
+      .box button:hover {
+        background: rgba(74, 155, 255, 0.06);
+      }
+       .box button.active {
+            background: linear-gradient(#06486e);
+            color: #fff;
+        }
+
+
+      /* 为 fixed box 留出主区域左边距，避免遮挡 */
+      /* main 左侧留出导航宽度（随 --nav-width 可变），避免遮挡 */
+      main {
+        margin-left: calc(var(--nav-width) + var(--nav-gap));
+        flex: 1;
+        min-height: 0; /* 允许纵向滚动 */
+        padding: 20px;
+        background: #fff;
+        overflow-y: auto;
+      }
+
+      /* 右侧栏 */
+      aside.right {
+        width: 220px;
+        flex: 0 0 220px;
+        padding: 16px;
+        background: #f4f6fa;
+        border-left: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      /* 轮播（放在 main 顶部） */
+      .carousel {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 8px;
+        margin-bottom: 18px;
+        background: #222;
+      }
+      .carousel .slides {
+        display: flex;
+        height: 100%;
+        transition: transform 0.45s ease;
+      }
+      .carousel .slide {
+        flex: 0 0 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .carousel .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .carousel .btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 0, 0, 0.35);
+        color: #fff;
+        cursor: pointer;
+      }
+      .carousel .prev {
+        left: 12px;
+      }
+      .carousel .next {
+        right: 12px;
+      }
+      .carousel .indicators {
+        position: absolute;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+      }
+      .carousel .indicators button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.5);
+      }
+      .carousel .indicators button.active {
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
+      }
+      @media (max-width: 900px) {
+        .carousel {
+          height: 220px;
+        }
+      }
+      @media (max-width: 600px) {
+        .carousel {
+          height: 160px;
+        }
+        /* 小屏取消固定悬浮导航布局（保持可用性） */
+        .box { position: static; transform: none; min-width: 0; width: auto; flex-direction: row; gap: 0.4rem; padding: .4rem; }
+        main { margin-left: 16px; }
+        aside.right {
+          display: none;
+        }
+      }
+
+      /* passage 列表：纵向排列，每个 .item 只有横向分割线（上下） */
+      .grid {
+        display: block;
+      }
+      .grid .item {
+        padding: 14px 16px;
+        background: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        border-left: none;
+        border-right: none;
+      }
+      /* 避免第一项重复双上边线（若需要可移除） */
+      .grid .item:first-child {
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+      }
+      /* 链接样式在 item 内 */
+      .grid .item a {
+        color: #1565c0;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+        <h2>天文爱好者论坛</h2>
+    </header>
+
+    <div class="container">
+      <!-- 悬浮导航（演示按钮，不会跳转） -->
+      <nav class="box" aria-label="主导航">
+        <button type="button" data-nav-id="0">加入我们</button>
+        <button type="button" data-nav-id="1">星科社区</button>
+        <button type="button" data-nav-id="2">观星指南</button>
+        <button type="button" data-nav-id="3">留言树屋</button>
+      </nav>
+
+      <!-- 主内容区 -->
+      <main role="main" id="mainContent">
+        <!-- 轮播 -->
+        <div class="carousel" id="carousel">
+          <div class="slides" aria-live="polite">
+            <div class="slide"><img src="天文台.jpg" alt="轮播图一" /></div>
+            <div class="slide"><img src="月食.jpg" alt="轮播图二" /></div>
+            <div class="slide"><img src="蟹状星云.jpg" alt="轮播图三" /></div>
+          </div>
+          <button class="btn prev" aria-label="上一张">&lsaquo;</button>
+          <button class="btn next" aria-label="下一张">&rsaquo;</button>
+          <div class="indicators" role="tablist" aria-hidden="false"></div>
+        </div>
+
+        <!-- 文章列表 -->
+        <div class="grid" aria-label="文章列表">
+          <div class="item">
+            <a
+              href="https://zhuanlan.zhihu.com/p/27944683"
+              target="_blank"
+              rel="noopener"
+              >观星拍摄</a
+            >
+          </div>
+          <div class="item">
+            <a
+              href="https://www.cas.cn/cm/202508/t20250825_5080274.shtml"
+              target="_blank"
+              rel="noopener"
+              >宇宙探索</a
+            >
+          </div>
+          <div class="item">
+            名赋星章 |
+            <a
+              href="http://www.kepu.gov.cn/news/2025-05/27/content_346538.html"
+              target="_blank"
+              rel="noopener"
+              >月球历法征名投票</a
+            >
+          </div>
+          <div class="item">
+            <a
+              href="https://news.qq.com/rain/a/20251014A05XU100"
+              target="_blank"
+              rel="noopener"
+              >引力透镜与地外文明</a
+            >
+          </div>
+          <div class="item">星闻 | <a href="#">危险小行星撞地球</a></div>
+      </main>
+
+      <!-- 右侧栏 -->
+      <aside class="right"
+        style="
+          background: #1565c01a;
+          border-left: 1px solid rgba(0, 0, 0, 0.06);
+        "
+        aria-label="侧边栏">
+        <section>
+          <h3>最新公告</h3>
+          <p>欢迎加入天文爱好者论坛！</p>
+        </section>
+        <nav>
+          <ul style="padding-left: 0; list-style: none; margin: 16px 0 0 0">
+            <li><a href="#">今日观星指南</a></li>
+            <hr>
+            <li><a href="#">星座故事</a></li>
+            <hr>
+            <li><a href="#">天文大事年表</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+
+    <footer>&copy; 2025 天文爱好者论坛. 保留所有权利.</footer>
+
+    <script>
+      // 导航按钮：点击仅高亮（持久化）
+      (function () {
+        const nav = document.querySelector(".box");
+        if (!nav) return;
+        const btns = Array.from(nav.querySelectorAll("button"));
+        btns.forEach((b, i) => {
+          if (!b.dataset.navId) b.dataset.navId = String(i);
+        });
+        const saved = localStorage.getItem("box-active");
+        if (saved) {
+          const el = nav.querySelector(`button[data-nav-id="${saved}"]`);
+          if (el)
+            btns.forEach((x) => x.classList.remove("active")) ||
+              el.classList.add("active");
+        }
+        btns.forEach((b) =>
+          b.addEventListener("click", () => {
+            btns.forEach((x) => x.classList.remove("active"));
+            b.classList.add("active");
+            localStorage.setItem("box-active", b.dataset.navId);
+          })
+        );
+      })();
+    </script>
+
+    <script>
+      // 轮播逻辑（自动 + 手动切换），初始化指示点
+      (function () {
+        const carousel = document.getElementById("carousel");
+        if (!carousel) return;
+        const slidesWrap = carousel.querySelector(".slides");
+        const slides = Array.from(carousel.querySelectorAll(".slide"));
+        const prev = carousel.querySelector(".prev");
+        const next = carousel.querySelector(".next");
+        const indicatorsWrap = carousel.querySelector(".indicators");
+        let idx = 0,
+          timer = null,
+          interval = 3500;
+
+        slides.forEach((_, i) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.dataset.index = i;
+          if (i === 0) btn.classList.add("active");
+          indicatorsWrap.appendChild(btn);
+        });
+        const indicators = Array.from(indicatorsWrap.children);
+
+        function goTo(i) {
+          idx = (i + slides.length) % slides.length;
+          slidesWrap.style.transform = `translateX(-${idx * 100}%)`;
+          indicators.forEach((b, bi) =>
+            b.classList.toggle("active", bi === idx)
+          );
+        }
+        function start() {
+          stop();
+          timer = setInterval(() => goTo(idx + 1), interval);
+        }
+        function stop() {
+          if (timer) {
+            clearInterval(timer);
+            timer = null;
+          }
+        }
+
+        prev.addEventListener("click", () => {
+          goTo(idx - 1);
+          start();
+        });
+        next.addEventListener("click", () => {
+          goTo(idx + 1);
+          start();
+        });
+        indicators.forEach((b) =>
+          b.addEventListener("click", () => {
+            goTo(Number(b.dataset.index));
+            start();
+          })
+        );
+        carousel.addEventListener("mouseenter", stop);
+        carousel.addEventListener("mouseleave", start);
+
+        goTo(0);
+        start();
+      })();
+    </script>
+  </body>
+</html>
+>>>>>>> 150e3d6 (初始化提交：上传 Final_project_wsy)

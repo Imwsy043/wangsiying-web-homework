@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  .banner {
         width: 100%;
         height: 200px;
@@ -15,3 +16,34 @@
         padding: 20px;
         box-sizing: border-box;
     }
+=======
+ .banner {
+        width: 100%;
+        height: 200px;
+        background-image: url('Cover picture.webp'); /* 替换为你的横幅图片路径 */
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 20px;
+    }
+    .box {
+        width: 200px;
+        height: 400px;
+        background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        box-sizing: border-box;
+    }
+   
+      header,
+      footer {
+        padding: 16px;
+        text-align: center;
+      }
+
+      header {
+        background:  #f5f5f5; ;
+        color: black;
+        font-size: 24px;
+      }
+>>>>>>> 150e3d6 (初始化提交：上传 Final_project_wsy)
